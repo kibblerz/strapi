@@ -54,6 +54,10 @@ const getProjectSettings = async () => {
   const store = await strapi.store({ type: 'core', name: 'admin' });
   const projectSettings = await store.get({ key: 'project-settings' });
 
+  if (!projectSettings) {
+    return null;
+  }
+
   // Filter file input fields
   PROJECT_SETTINGS_FILE_INPUTS.forEach(inputName => {
     if (!projectSettings[inputName]) {
