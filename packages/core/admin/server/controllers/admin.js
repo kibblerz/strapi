@@ -45,7 +45,11 @@ module.exports = {
     const uuid = strapi.config.get('uuid', false);
     const hasAdmin = await getService('user').exists();
     const projectSettings = await getService('project-settings').getProjectSettings();
-    const menuLogo = projectSettings ? (projectSettings.menuLogo ? menuLogo.url : null) : null;
+    const menuLogo = projectSettings
+      ? projectSettings.menuLogo
+        ? projectSettings.menuLogo.url
+        : null
+      : null;
 
     return { data: { uuid, hasAdmin, menuLogo } };
   },
