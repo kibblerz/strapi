@@ -52,15 +52,12 @@ const parseFilesData = async files => {
 
 const getProjectSettings = async () => {
   const store = await strapi.store({ type: 'core', name: 'admin' });
-  const projectSettings = await store.get({ key: 'project-settings' });
-
-  if (!projectSettings) {
-    return null;
-  }
+  const projectSettings = (await store.get({ key: 'project-settings' })) || {};
 
   // Filter file input fields
   PROJECT_SETTINGS_FILE_INPUTS.forEach(inputName => {
     if (!projectSettings[inputName]) {
+      projectSettings[inputName] = null;
       return;
     }
 
