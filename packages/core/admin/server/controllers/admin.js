@@ -51,6 +51,7 @@ module.exports = {
   },
 
   async getProjectSettings() {
+    console.log('here');
     return getService('project-settings').getProjectSettings();
   },
 
