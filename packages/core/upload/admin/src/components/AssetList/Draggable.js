@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useDrag, useDrop } from 'react-dnd';
 
 export const Draggable = ({ children, id, index, moveItem }) => {
-  const ref = useRef(null);
+  const ref = useRef();
 
   const [, drop] = useDrop({
     accept: 'draggable',
